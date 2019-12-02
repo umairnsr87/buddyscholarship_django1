@@ -1,0 +1,47 @@
+{% extends 'buddyscholarship_html/base.html' %}
+
+{% block body %}
+
+
+
+<section class="section pt-0">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h2 class="section-title">Latest News</h2>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+
+            <div class="container">
+                <br>
+            </div>
+            <div class="container-fluid">
+                <div class="row">
+
+                    {% for i in data %}
+                    <div class="col-xs-3 col-sm-3 col-md-3">
+                        <div class="card" >
+                            <div class="embed-responsive embed-responsive-16by9">
+                                <img src='/media/{{i.blog_image}}' class="card-img-top embed-responsive-item" alt="...">
+                            </div>
+
+                            <div class="card-body">
+                                <h5 class="card-title">{{i.blog_title}}</h5>
+                                <p class="card-text">{{i.blog_type}}</p>
+                                <p class="card-text">By:{{i.blog_author_name}}</p>
+                                <p class="card-text">{{i.blog_content}}</p>
+                                <h5 class="card-title">{{i.publish_date}}</h5>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                    <br>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+{% endblock %}
