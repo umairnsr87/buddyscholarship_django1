@@ -37,7 +37,7 @@ background-color: bg-dark;
         </div>
         <div class="carousel-item">
             <img src="{% static 'images/banner/banner-1.jpg' %}" class="d-block w-100" alt="...">
-            <div class="carousel-caption">
+            <div class="carousel-caption" >
                 <h4>Third label</h4>
                 <p>Take note of the 'active' and 'slide' classes.</p>
             </div>
@@ -121,47 +121,32 @@ background-color: bg-dark;
                 <h2 class="section-title">Latest News</h2>
             </div>
         </div>
+
         <div class="row justify-content-center">
+            {% for i in data|slice:"0:4" %}
+            <!-- blog post -->
             <!-- blog post -->
             <article class="col-lg-4 col-sm-6 mb-5 mb-lg-0">
                 <div class="card rounded-0 border-bottom border-primary border-top-0 border-left-0 border-right-0 hover-shadow">
-                    <img class="card-img-top rounded-0" src="{% static 'images/blog/post-1.jpg' %}" alt="Post thumb">
+                    <img class="card-img-top rounded-0" src='/media/{{i.blog_image}}' alt="Post thumb">
                     <div class="card-body">
                         <!-- post meta -->
                         <ul class="list-inline mb-3">
                             <!-- post date -->
-                            <li class="list-inline-item mr-3 ml-0">August 28, 2019</li>
+                            <li class="list-inline-item mr-3 ml-0">{{i.publish_date}}</li>
                             <!-- author -->
-                            <li class="list-inline-item mr-3 ml-0">By Jonathon</li>
+                            <li class="list-inline-item mr-3 ml-0">By {{i.blog_author_name}}</li>
                         </ul>
-                        <a href="blog-single.html">
-                            <h4 class="card-title">The Expenses You Are Thinking.</h4>
+                        <a href="{% url 'post_detail' i.slug  %}">
+                            <h4 class="card-title">{{i.blog_title}}</h4>&rarr;
                         </a>
-                        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicin</p>
-                        <a href="blog-single.html" class="btn btn-primary btn-sm">read more</a>
+                        <p class="card-text">{{i.blog_content|truncatewords:50}}</p>
+                        <a href="{% url 'post_detail' i.slug  %}" class="btn btn-primary btn-sm">read more &rarr;</a>
                     </div>
                 </div>
             </article>
-            <!-- blog post -->
-            <article class="col-lg-4 col-sm-6 mb-5 mb-lg-0">
-                <div class="card rounded-0 border-bottom border-primary border-top-0 border-left-0 border-right-0 hover-shadow">
-                    <img class="card-img-top rounded-0" src="{% static 'images/blog/post-2.jpg' %}" alt="Post thumb">
-                    <div class="card-body">
-                        <!-- post meta -->
-                        <ul class="list-inline mb-3">
-                            <!-- post date -->
-                            <li class="list-inline-item mr-3 ml-0">August 13, 2019</li>
-                            <!-- author -->
-                            <li class="list-inline-item mr-3 ml-0">By Jonathon Drew</li>
-                        </ul>
-                        <a href="blog-single.html">
-                            <h4 class="card-title">Tips to Succeed in an Online Course</h4>
-                        </a>
-                        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicin</p>
-                        <a href="blog-single.html" class="btn btn-primary btn-sm">read more</a>
-                    </div>
-                </div>
-            </article>
+            {% endfor %}
+
         </div>
     </div>
 </section>

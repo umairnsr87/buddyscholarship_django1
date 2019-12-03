@@ -82,13 +82,13 @@
               <a class="nav-link" href="{% url 'home' %}">Home</a>
             </li>
             <li class="nav-item @@about">
-              <a class="nav-link" href="about.html">About</a>
+              <a class="nav-link" href="{% url 'about' %}">About</a>
             </li>
             <li class="nav-item @@courses">
               <a class="nav-link" href="courses.html">Scholarship</a>
             </li>
             <li class="nav-item @@events">
-              <a class="nav-link" href="events.html">Admissions</a>
+              <a class="nav-link" href="{% url 'admissions' %}">Admissions</a>
             </li>
             <li class="nav-item @@blog">
               <a class="nav-link" href="{% url 'blogs' %}">BLOG</a>
@@ -192,7 +192,7 @@
 
 
 
-{% block javascript %}
+{% block javascript_jquery %}
 {% endblock %}
 
 

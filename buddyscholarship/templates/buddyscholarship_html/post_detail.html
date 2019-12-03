@@ -1,0 +1,24 @@
+{% extends 'buddyscholarship_html/base.html' %}
+
+{% block body %}
+
+
+
+<div class="container-fluid" style="margin-top:50px;">
+    <div class="card">
+        <div class="card-header">
+            {{ blog.blog_title }} | {{ blog.blog_type }}
+        </div>
+        <div class="card-body">
+            <img src="/media/{{blog.blog_image}}" >
+            <hr>
+            <h5 class="card-title">{{blog.blog_title}}</h5>
+            <p class="card-text">{{blog.blog_content}}</p>
+            <a href="{% url 'home' %}" class="btn btn-primary">back to home</a>
+        </div>
+        <div class="card-header">
+            {{ blog.blog_author_name }}
+        </div>
+    </div>
+</div>
+{% endblock %}
