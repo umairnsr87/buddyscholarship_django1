@@ -3,7 +3,7 @@
 {% block body %}
 
 
-
+<!-- blog -->
 <section class="section pt-0">
     <div class="container">
         <div class="row">
@@ -12,36 +12,32 @@
             </div>
         </div>
         <div class="row justify-content-center">
+            {% for i in data %}
 
-            <div class="container">
-                <br>
-            </div>
-            <div class="container-fluid">
-                <div class="row">
-
-                    {% for i in data %}
-                    <div class="col-xs-3 col-sm-3 col-md-3">
-                        <div class="card" >
-                            <div class="embed-responsive embed-responsive-16by9">
-                                <img src='/media/{{i.blog_image}}' class="card-img-top embed-responsive-item" alt="...">
-                            </div>
-
-                            <div class="card-body">
-                                <h5 class="card-title">{{i.blog_title}}</h5>
-                                <p class="card-text">{{i.blog_type}}</p>
-                                <p class="card-text">By:{{i.blog_author_name}}</p>
-                                <p class="card-text">{{i.blog_content}}</p>
-                                <h5 class="card-title">{{i.publish_date}}</h5>
-                            </div>
-                        </div>
+            <!-- blog post -->
+            <article class="col-lg-4 col-sm-6 mb-5 mb-lg-0">
+                <div class="card rounded-0 border-bottom border-primary border-top-0 border-left-0 border-right-0 hover-shadow">
+                    <img class="card-img-top rounded-0" src='/media/{{i.blog_image}}' alt="Post thumb">
+                    <div class="card-body">
+                        <!-- post meta -->
+                        <ul class="list-inline mb-3">
+                            <!-- post date -->
+                            <li class="list-inline-item mr-3 ml-0">{{i.publish_date}}</li>
+                            <!-- author -->
+                            <li class="list-inline-item mr-3 ml-0">By {{i.blog_author_name}}</li>
+                        </ul>
+                        <a href="{% url 'post_detail' i.slug  %}">
+                            <h4 class="card-title">{{i.blog_title}}</h4>&rarr;
+                        </a>
+                        <p class="card-text">{{i.blog_content|truncatewords:50}}</p>
+                        <a href="{% url 'post_detail' i.slug  %}" class="btn btn-primary btn-sm">read more &rarr;</a>
                     </div>
-                    {% endfor %}
-                    <br>
-
                 </div>
-            </div>
-
+            </article>
+            {% endfor %}
         </div>
+
     </div>
 </section>
 {% endblock %}
+
