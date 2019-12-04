@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    
     'buddyscholarship'
 ]
 
@@ -123,3 +124,6 @@ STATIC_URL = '/static/'
 #manageing media for fetching the data from the db
 MEDIA_ROOT=os.path.join(BASE_DIR,'media')
 MEDIA_URL='/media/'
+TEMPLATE_DIRS = (
+    os.path.join(BASE_DIR, 'templates'),
+)
